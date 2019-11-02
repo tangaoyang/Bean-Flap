@@ -48,14 +48,14 @@
                 grade -= 2;
                 [starImageView addSubview:starSingleImageView];
             }
-            [_filmGradeImageArray addObject:starImageView];
             [self addSubview:starImageView];
+            [_filmGradeImageArray addObject:starImageView];
         }
         
         for (int j = 0; j < 6; j++) {
             UIButton *filmButton = [[UIButton alloc] init];
-            [self.filmButtonArray addObject:filmButton];
             [self addSubview:filmButton];
+            [self.filmButtonArray addObject:filmButton];
             filmButton.layer.masksToBounds = YES;
             filmButton.layer.cornerRadius = 10;
             
@@ -69,14 +69,14 @@
             starLabel.text = self.filmGradeArray[j];
             starLabel.font = [UIFont systemFontOfSize:12];
             [starLabel setTextColor:[UIColor grayColor]];
-            [self.filmGradeLabelArray addObject:starLabel];
             [self addSubview:starLabel];
+            [self.filmGradeLabelArray addObject:starLabel];
             
             UIButton *pickButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [pickButton setImage:[[UIImage imageNamed:@"BeanFlapFilmUnPick.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             [pickButton addTarget:self action:@selector(pick:) forControlEvents:UIControlEventTouchUpInside];
-            [self.pickButtonArray addObject:pickButton];
             [self addSubview:pickButton];
+            [self.pickButtonArray addObject:pickButton];
             
         }
         
@@ -112,7 +112,6 @@
     subjectModelsix = _myModel.subjects[5];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         self -> _filmNameArray[0] = subjectModelone.title;
         NSString *imageStrOne = [NSString stringWithFormat:@"%@", subjectModelone.images.medium];
         NSData *imageDataOne = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrOne]];
@@ -184,11 +183,13 @@
             }
             k++;
         }
+        
         for (int i = 0; i < 6; i++) {
             double grade = [self -> _filmGradeArray[i] doubleValue];
             if (grade == 0) {
                 UIImageView *nilImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BeanFlapNilImageView.jpg"]];
                 [self -> _filmGradeImageArray[i] removeFromSuperview];
+                [self addSubview:nilImageView];
                 self -> _filmGradeImageArray[i] = nilImageView;
             } else {
                 UIImageView *starImageView = [[UIImageView alloc] init];
@@ -205,8 +206,10 @@
                     [starImageView addSubview:starSingleImageView];
                 }
                 [self -> _filmGradeImageArray[i] removeFromSuperview];
+                [self addSubview:starImageView];
                 self -> _filmGradeImageArray[i] = starImageView;
             }
+         
         }
         
     });
@@ -235,7 +238,7 @@
                 make.width.equalTo(@([UIScreen mainScreen].bounds.size.width / 3 - 15));
                 make.height.equalTo(@(35));
             }];
-            
+
             [_filmGradeImageArray[i + j * 3] mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(@([UIScreen mainScreen].bounds.size.width / 3 * i + 15));
                 make.top.equalTo(@(250 + j * 250));

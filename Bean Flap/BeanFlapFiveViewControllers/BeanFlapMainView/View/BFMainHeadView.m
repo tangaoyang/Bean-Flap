@@ -18,7 +18,7 @@
         
         self.FilmscrollView = [[UIScrollView alloc] init];
         [self addSubview:self.FilmscrollView];
-        self.FilmscrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 2, 700);
+        self.FilmscrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 2, 900);
         
         self.bigButtonArray = [[NSMutableArray alloc] init];
         self.bigPartArray = [[NSArray alloc] init];
@@ -44,7 +44,7 @@
         self.nowTableView = [[UITableView alloc] init];
         self.nowHeadView = [[BFNowHeadView alloc] init];
         _nowTableView.tableHeaderView = _nowHeadView;
-        [self addSubview:_nowTableView];
+        [_FilmscrollView addSubview:_nowTableView];
         
         UIView *view = [[UIView alloc] init];
         _nowTableView.tableFooterView = view;
@@ -52,7 +52,7 @@
         self.willTableView = [[UITableView alloc] init];
         self.willHeadView = [[BFWillHeadView alloc] init];
         _willTableView.tableHeaderView = _willHeadView;
-        [self addSubview:_willTableView];
+        [_FilmscrollView addSubview:_willTableView];
         _willTableView.tableFooterView = view;
         
         self.showAllLabel = [[UILabel alloc] init];
@@ -73,17 +73,27 @@
         self.downLineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bean-Flap-Line.png"]];
         [self addSubview:self.downLineImageView];
         
-        
-        _nowAllFilm = _nowHeadView.myModel.total;
-        _willAllFilm = _willHeadView.willModel.total;
+        [self filmCount];
     }
     return self;
 }
 
+-(void)filmCount {
+    _nowAllFilm = _nowHeadView.myModel.total;
+    _willAllFilm = _willHeadView.willModel.total;
+    NSLog(@"_nowHeadView.myModel.total = %@", _nowHeadView.myModel.total);
+    NSLog(@"_willHeadView.willModel.total = %@", _willHeadView.willModel.total);
+    
+    if (_FilmscrollView.contentOffset.x == 0) {
+        _showAllFilmCount.text = [NSString stringWithFormat:@"全部 %@", _nowAllFilm];
+    } else {
+        _showAllFilmCount.text = [NSString stringWithFormat:@"全部 %@", _willAllFilm];
+    }
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+    [self filmCount];
     int i = 0;
     for (UIButton *exButton in self.bigButtonArray) {
         [exButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,30 +135,30 @@
     
     [_nowTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(0));
-        make.top.equalTo(@(88));
+        make.top.equalTo(@(5));
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
         make.height.equalTo(@(700));
     }];
     
     [_nowHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(0));
-        make.top.equalTo(@(10));
+        make.top.equalTo(@(0));
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
-        make.height.equalTo(@(700));
+        make.height.equalTo(@(600));
     }];
     
     [_willTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@([UIScreen mainScreen].bounds.size.width));
-        make.top.equalTo(@(88));
+        make.top.equalTo(@(5));
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
         make.height.equalTo(@(700));
     }];
     
     [_willHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@([UIScreen mainScreen].bounds.size.width));
-        make.top.equalTo(@(10));
+        make.top.equalTo(@(0));
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
-        make.height.equalTo(@(700));
+        make.height.equalTo(@(600));
     }];
     
     [_cellBlackLineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -161,6 +171,7 @@
 }
 
 - (void)bigButtonPress:(UIButton *)button {
+    
     [button setTintColor:[UIColor blackColor]];
     for (UIButton *exButton in self.bigButtonArray) {
         if (exButton !=  button) {
@@ -178,7 +189,7 @@
         make.height.equalTo(@(2));
     }];
     
-    [self.FilmscrollView setContentOffset:CGPointMake([UIScreen mainScreen].bounds.size.width * (button.tag - 200), 0)];
+    [_FilmscrollView setContentOffset:CGPointMake([UIScreen mainScreen].bounds.size.width * (button.tag - 200), 0)];
     
     if (_FilmscrollView.contentOffset.x == 0) {
         _showAllFilmCount.text = [NSString stringWithFormat:@"全部 %@", _nowAllFilm];
