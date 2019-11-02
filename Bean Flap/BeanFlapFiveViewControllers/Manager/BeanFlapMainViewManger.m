@@ -28,14 +28,13 @@ static BeanFlapMainViewManger *manger = nil;
 }
 
 - (void)fetchMainViewFilmSucceed:(BFMainViewNowBlock)succeedBlock error:(ErrorBlock)errorBlock {
-    NSString *filmNowURLStr = [NSString stringWithFormat:@"http://douban.uieee.com/v2/movie/in_theaters"];
+    NSString *filmNowURLStr = [NSString stringWithFormat:@"http://douban-api.zce.now.sh/v2/movie/in_theaters"];
     NSURL *filmNowURL = [NSURL URLWithString:filmNowURLStr];
     NSURLRequest *filmNowURLRequest = [NSURLRequest requestWithURL:filmNowURL];
     NSURLSession *filmNowURLSeesion = [NSURLSession sharedSession];
     NSURLSessionDataTask *filmNowDataTask = [filmNowURLSeesion dataTaskWithRequest:filmNowURLRequest completionHandler:^(NSData *_Nullable data, NSURLResponse * _Nullable response, NSError *_Nullable error) {
         if (error == nil) {
             NSDictionary *getDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-//            NSLog(@"%@", getDictionary);
             BeanFlapMainViewModel *filmNowModel = [[BeanFlapMainViewModel alloc] initWithDictionary:getDictionary error:&error];
             succeedBlock(filmNowModel);
         } else {
@@ -43,6 +42,25 @@ static BeanFlapMainViewManger *manger = nil;
         }
     }];
     [filmNowDataTask resume];
+}
+
+- (void)fetchWillViewFilmSucceed:(BFWillShowBlock)succeedBlock error:(ErrorBlock)errorBlock {
+    
+    NSString *filmWillURLStr = [NSString stringWithFormat:@"https://douban-api.zce.now.sh/v2/movie/coming_soon"];
+    NSURL *filmWillURL = [NSURL URLWithString:filmWillURLStr];
+    NSURLRequest *filmWillURLRequest = [NSURLRequest requestWithURL:filmWillURL];
+    NSURLSession *filmWillURLSeesion = [NSURLSession sharedSession];
+    NSURLSessionDataTask *filmWillDataTask = [filmWillURLSeesion dataTaskWithRequest:filmWillURLRequest completionHandler:^(NSData *_Nullable data, NSURLResponse * _Nullable response, NSError *_Nullable error) {
+        if (error == nil) {
+            NSDictionary *getDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            BFWillHeadViewModel *filmWillModel = [[BFWillHeadViewModel alloc] initWithDictionary:getDictionary error:&error];
+            succeedBlock(filmWillModel);
+        } else {
+            errorBlock(error);
+        }
+    }];
+    [filmWillDataTask resume];
+    
 }
 
 @end

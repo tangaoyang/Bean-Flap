@@ -16,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BFRatingModel : JSONModel
 
-@property (nonatomic, strong) NSString *average;
+@property (nonatomic) double average;
 
 @end
 
 @interface BFImagesModel : JSONModel
 
-@property (nonatomic, strong) NSString *meidum;
+@property (nonatomic, strong) NSString *medium;
 
 @end
 
@@ -31,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) BFImagesModel *images;
 
-//- (instancetype)initWithDictionary:(NSDictionary *)dict;
 @end
 
 @interface BeanFlapMainViewModel : JSONModel

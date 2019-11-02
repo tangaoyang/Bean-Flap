@@ -26,6 +26,7 @@
 		860CE18923588E6C00E51229 /* BFSmallFilmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860CE18823588E6C00E51229 /* BFSmallFilmViewController.m */; };
 		860CE18C235890B800E51229 /* BFSmallFilmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 860CE18B235890B800E51229 /* BFSmallFilmView.m */; };
 		8610344B235344AE0070382E /* BFMainViewButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8610344A235344AE0070382E /* BFMainViewButtonTableViewCell.m */; };
+		86113ACA236426430042A9B8 /* BFMainHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86113AC9236426430042A9B8 /* BFMainHeadView.m */; };
 		861150AD234DEF8E0029BEAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 861150AC234DEF8E0029BEAE /* AppDelegate.m */; };
 		861150B0234DEF8E0029BEAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861150AF234DEF8E0029BEAE /* ViewController.m */; };
 		861150B3234DEF8E0029BEAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861150B1234DEF8E0029BEAE /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		861150E4234E25140029BEAE /* Bean-Flap-Groupun.png in Resources */ = {isa = PBXBuildFile; fileRef = 861150DA234E25140029BEAE /* Bean-Flap-Groupun.png */; };
 		861150E5234E25140029BEAE /* Bean-Flap-Homeun.png in Resources */ = {isa = PBXBuildFile; fileRef = 861150DB234E25140029BEAE /* Bean-Flap-Homeun.png */; };
 		861150EB234E27AE0029BEAE /* BeanFlapMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 861150EA234E27AE0029BEAE /* BeanFlapMainViewController.m */; };
+		86128276236DAF8400023821 /* BFNowHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86128275236DAF8400023821 /* BFNowHeadView.m */; };
 		86133AAD2351EF7800705ECF /* BeanFlapMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86133AAC2351EF7800705ECF /* BeanFlapMainView.m */; };
 		86133AB52351FCC700705ECF /* Bean-Flap-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 86133AB42351FCC700705ECF /* Bean-Flap-Logo.png */; };
 		86133ABA2352157900705ECF /* Bean-Flap-Arrow-Right.png in Resources */ = {isa = PBXBuildFile; fileRef = 86133AB92352157900705ECF /* Bean-Flap-Arrow-Right.png */; };
@@ -53,9 +55,12 @@
 		86163949235B609800DED4A2 /* BeanFlapFilmPick.png in Resources */ = {isa = PBXBuildFile; fileRef = 86163948235B609800DED4A2 /* BeanFlapFilmPick.png */; };
 		861A55002361BED000370DE9 /* BeanFlapMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */; };
 		861A55032361BF0600370DE9 /* BeanFlapMainViewManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */; };
+		861B1BEC2369D5420078A48E /* BFWillHeadViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 861B1BEB2369D5420078A48E /* BFWillHeadViewModel.m */; };
 		8664C56F235C98FB006069AB /* BeanFlapStarPart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56C235C98FB006069AB /* BeanFlapStarPart.png */; };
 		8664C570235C98FB006069AB /* BeanFlapStarLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56D235C98FB006069AB /* BeanFlapStarLight.png */; };
 		8664C571235C98FB006069AB /* BeanFlapStarUnlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56E235C98FB006069AB /* BeanFlapStarUnlight.png */; };
+		86FD4F8D2365C75100AA865A /* BFWillHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FD4F8C2365C75100AA865A /* BFWillHeadView.m */; };
+		86FD4F912365D03700AA865A /* BeanFlapNilImageView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86FD4F902365D03700AA865A /* BeanFlapNilImageView.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +92,8 @@
 		860CE18B235890B800E51229 /* BFSmallFilmView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmView.m; sourceTree = "<group>"; };
 		86103449235344AE0070382E /* BFMainViewButtonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMainViewButtonTableViewCell.h; sourceTree = "<group>"; };
 		8610344A235344AE0070382E /* BFMainViewButtonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMainViewButtonTableViewCell.m; sourceTree = "<group>"; };
+		86113AC8236426430042A9B8 /* BFMainHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMainHeadView.h; sourceTree = "<group>"; };
+		86113AC9236426430042A9B8 /* BFMainHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMainHeadView.m; sourceTree = "<group>"; };
 		861150A8234DEF8E0029BEAE /* Bean Flap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bean Flap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861150AB234DEF8E0029BEAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		861150AC234DEF8E0029BEAE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +116,8 @@
 		861150DB234E25140029BEAE /* Bean-Flap-Homeun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Homeun.png"; sourceTree = "<group>"; };
 		861150E9234E27AE0029BEAE /* BeanFlapMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeanFlapMainViewController.h; sourceTree = "<group>"; };
 		861150EA234E27AE0029BEAE /* BeanFlapMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainViewController.m; sourceTree = "<group>"; };
+		86128274236DAF8400023821 /* BFNowHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFNowHeadView.h; sourceTree = "<group>"; };
+		86128275236DAF8400023821 /* BFNowHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFNowHeadView.m; sourceTree = "<group>"; };
 		86133AAB2351EF7800705ECF /* BeanFlapMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeanFlapMainView.h; sourceTree = "<group>"; };
 		86133AAC2351EF7800705ECF /* BeanFlapMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainView.m; sourceTree = "<group>"; };
 		86133AB42351FCC700705ECF /* Bean-Flap-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Logo.png"; sourceTree = "<group>"; };
@@ -125,9 +134,14 @@
 		861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainViewModel.m; sourceTree = "<group>"; };
 		861A55012361BF0600370DE9 /* BeanFlapMainViewManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeanFlapMainViewManger.h; sourceTree = "<group>"; };
 		861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainViewManger.m; sourceTree = "<group>"; };
+		861B1BEA2369D5420078A48E /* BFWillHeadViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWillHeadViewModel.h; sourceTree = "<group>"; };
+		861B1BEB2369D5420078A48E /* BFWillHeadViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWillHeadViewModel.m; sourceTree = "<group>"; };
 		8664C56C235C98FB006069AB /* BeanFlapStarPart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarPart.png; sourceTree = "<group>"; };
 		8664C56D235C98FB006069AB /* BeanFlapStarLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarLight.png; sourceTree = "<group>"; };
 		8664C56E235C98FB006069AB /* BeanFlapStarUnlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarUnlight.png; sourceTree = "<group>"; };
+		86FD4F8B2365C75100AA865A /* BFWillHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWillHeadView.h; sourceTree = "<group>"; };
+		86FD4F8C2365C75100AA865A /* BFWillHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWillHeadView.m; sourceTree = "<group>"; };
+		86FD4F902365D03700AA865A /* BeanFlapNilImageView.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BeanFlapNilImageView.jpg; sourceTree = "<group>"; };
 		F4986A3BCE62358EBEDEB437 /* libPods-Bean Flap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bean Flap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD160EFA38ACEB76CB9B8538 /* Pods-Bean Flap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bean Flap.debug.xcconfig"; path = "Target Support Files/Pods-Bean Flap/Pods-Bean Flap.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,18 +174,57 @@
 		8610991D2350AF78000E9903 /* BeanFlapMainView */ = {
 			isa = PBXGroup;
 			children = (
-				861A55012361BF0600370DE9 /* BeanFlapMainViewManger.h */,
-				861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */,
-				861A54FE2361BED000370DE9 /* BeanFlapMainViewModel.h */,
-				861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */,
-				86133AAB2351EF7800705ECF /* BeanFlapMainView.h */,
-				86133AAC2351EF7800705ECF /* BeanFlapMainView.m */,
-				861150E9234E27AE0029BEAE /* BeanFlapMainViewController.h */,
-				861150EA234E27AE0029BEAE /* BeanFlapMainViewController.m */,
-				86103449235344AE0070382E /* BFMainViewButtonTableViewCell.h */,
-				8610344A235344AE0070382E /* BFMainViewButtonTableViewCell.m */,
+				86113ACE23649FF00042A9B8 /* Controller */,
+				86113ACD23649FDC0042A9B8 /* Model */,
+				86113ACB23649FBE0042A9B8 /* View */,
 			);
 			path = BeanFlapMainView;
+			sourceTree = "<group>";
+		};
+		86113ACB23649FBE0042A9B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86103449235344AE0070382E /* BFMainViewButtonTableViewCell.h */,
+				8610344A235344AE0070382E /* BFMainViewButtonTableViewCell.m */,
+				86133AAB2351EF7800705ECF /* BeanFlapMainView.h */,
+				86133AAC2351EF7800705ECF /* BeanFlapMainView.m */,
+				86113AC8236426430042A9B8 /* BFMainHeadView.h */,
+				86113AC9236426430042A9B8 /* BFMainHeadView.m */,
+				86128274236DAF8400023821 /* BFNowHeadView.h */,
+				86128275236DAF8400023821 /* BFNowHeadView.m */,
+				86FD4F8B2365C75100AA865A /* BFWillHeadView.h */,
+				86FD4F8C2365C75100AA865A /* BFWillHeadView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86113ACD23649FDC0042A9B8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				861A54FE2361BED000370DE9 /* BeanFlapMainViewModel.h */,
+				861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */,
+				861B1BEA2369D5420078A48E /* BFWillHeadViewModel.h */,
+				861B1BEB2369D5420078A48E /* BFWillHeadViewModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86113ACE23649FF00042A9B8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				861150E9234E27AE0029BEAE /* BeanFlapMainViewController.h */,
+				861150EA234E27AE0029BEAE /* BeanFlapMainViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		86113ACF2364A0010042A9B8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				861A55012361BF0600370DE9 /* BeanFlapMainViewManger.h */,
+				861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		8611509F234DEF8E0029BEAE = {
@@ -209,6 +262,7 @@
 		861150C1234DF4650029BEAE /* BeanFlapFiveViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				86113ACF2364A0010042A9B8 /* Manager */,
 				861A54FB2361BC8A00370DE9 /* Main */,
 				8610991D2350AF78000E9903 /* BeanFlapMainView */,
 				861A54FD2361BD2F00370DE9 /* BFSmallFilm */,
@@ -233,6 +287,7 @@
 				8607E95E234F4B69006B9D57 /* Bean-Flap-Scan.png */,
 				8607E960234F4C67006B9D57 /* Bean-Flap-Search.png */,
 				8607E962234F4C6B006B9D57 /* Bean-Flap-Message.png */,
+				86FD4F902365D03700AA865A /* BeanFlapNilImageView.jpg */,
 				8607E967234F5816006B9D57 /* Bean-Flap-Line.png */,
 				8607E969234F586C006B9D57 /* Bean-Flap-BlackLine.png */,
 				86133AB42351FCC700705ECF /* Bean-Flap-Logo.png */,
@@ -392,6 +447,7 @@
 				8607E968234F5816006B9D57 /* Bean-Flap-Line.png in Resources */,
 				861150DD234E25140029BEAE /* Bean-Flap-I.png in Resources */,
 				86163947235B5F6300DED4A2 /* BeanFlapFilmUnPick.png in Resources */,
+				86FD4F912365D03700AA865A /* BeanFlapNilImageView.jpg in Resources */,
 				861150E3234E25140029BEAE /* Bean-Flap-Home.png in Resources */,
 				8609D6A9235DE72B00D87A86 /* BeanFlapWhiteBack.png in Resources */,
 				860A96422357330C00585F60 /* BeanFlapFilmFrame.png in Resources */,
@@ -434,11 +490,15 @@
 				86133AAD2351EF7800705ECF /* BeanFlapMainView.m in Sources */,
 				860CE180235884DD00E51229 /* BFFilmInformationView.m in Sources */,
 				86133AC0235216A600705ECF /* BeanFlapFilmListModel.m in Sources */,
+				86128276236DAF8400023821 /* BFNowHeadView.m in Sources */,
 				860CE1862358851600E51229 /* BFFilmInformationViewController.m in Sources */,
+				861B1BEC2369D5420078A48E /* BFWillHeadViewModel.m in Sources */,
 				86133AC3235216C600705ECF /* BeanFlapFilmListViewController.m in Sources */,
+				86113ACA236426430042A9B8 /* BFMainHeadView.m in Sources */,
 				86133ABD2352168900705ECF /* BeanFlapFilmListView.m in Sources */,
 				8609D6A5235DE2AE00D87A86 /* BFSmallFilmViewModel.m in Sources */,
 				861150EB234E27AE0029BEAE /* BeanFlapMainViewController.m in Sources */,
+				86FD4F8D2365C75100AA865A /* BFWillHeadView.m in Sources */,
 				861150B0234DEF8E0029BEAE /* ViewController.m in Sources */,
 				861150BB234DEF950029BEAE /* main.m in Sources */,
 				8610344B235344AE0070382E /* BFMainViewButtonTableViewCell.m in Sources */,

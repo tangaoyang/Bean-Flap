@@ -15,6 +15,9 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.filmNameArray = [[NSMutableArray alloc] init];
+    NSLog(@"123");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveTitle:) name:@"titleCenter" object:nil];
     
     self.FilmscrollView = [[UIScrollView alloc] init];
     [self addSubview:self.FilmscrollView];
@@ -65,8 +68,13 @@
     
     self.filmButtonArray = [[NSMutableArray alloc] init];
     self.filmnameLabelArray = [[NSMutableArray alloc] init];
-//    self.filmNameArray = @[@"我和我的祖国", @"中国机长", @"攀登者", @"沉睡魔咒2", @"双子杀手", @"犯罪现场"];
-   
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:@"123"];
+    [self.filmNameArray addObject:@"中国机长"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    
     
     self.filmGradeArray = [[NSMutableArray alloc] init];
     self.filmGradeImageArray = [[NSMutableArray alloc] init];
@@ -120,9 +128,19 @@
         [self.pickButtonArray addObject:pickButton];
         
     }
-    
     return self;
     
+}
+
+- (void)receiveTitle:(NSNotification *)noti {
+    NSLog(@"before  ==  %@", _filmNameArray);
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:[noti.userInfo objectForKey:@"title"]];
+    [self.filmNameArray addObject:@"中国机长"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    [self.filmNameArray addObject:@"我和我的祖国"];
+    NSLog(@"_filmNameArray   ==    %@", _filmNameArray);
 }
 
 - (void)layoutSubviews {
@@ -213,6 +231,11 @@
         }
     }
     
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)bigButtonPress:(UIButton *)button {

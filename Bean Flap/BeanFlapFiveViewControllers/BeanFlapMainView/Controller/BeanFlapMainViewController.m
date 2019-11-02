@@ -17,33 +17,40 @@
 
 @implementation BeanFlapMainViewController
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    //去掉导航栏
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self upData];
+    [self creatView];
     
-    self.manger = [BeanFlapMainViewManger sharedManger];
+}
+
+- (void)upData {
     [[BeanFlapMainViewManger sharedManger] fetchMainViewFilmSucceed:^(BeanFlapMainViewModel *resultModel){
-        self.myModel = resultModel;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            BFSubjectsModel *subjectModel = [[BFSubjectsModel alloc] init];
-            subjectModel = self -> _myModel.subjects[0];
-//            BFImagesModel *imageModel = [[BFImagesModel alloc] init];
-//            imageModel = subjectModel.images;
-            [self creatView];
-            self.myView.title = subjectModel.title;
-            [self.myView.tableView reloadData];
-//            NSLog(@"View Controller title  == %@", self.myView.title);
-//            [self.myView.tableView reloadData];
-            if ([self respondsToSelector: @selector(PassFilmTitle:andImage:andGrade:)]) {
-                [self.passFilmTitleImageGradeDelegate PassFilmTitle:subjectModel.title andImage:@"123" andGrade:@"5"];
-            }
-            NSLog(@"Controller sub title == %@", subjectModel.title);
-            NSLog(@"Controller sub image == %@", subjectModel.images.meidum);
-        });
+        self.myView.headView.nowHeadView.myModel = [[BeanFlapMainViewModel alloc] init];
+        self.myView.headView.nowHeadView.myModel = resultModel;
+        //创建通知
+        NSNotification *nowNSNoti = [NSNotification notificationWithName:@"relate" object:self userInfo:nil];
+        //通过通知中心发送通知更新
+        [[NSNotificationCenter defaultCenter] postNotification:nowNSNoti];
     } error: ^(NSError *error) {
-        NSLog(@"---  error");
+        NSLog(@"nowShowError");
     }];
-    
+    [[BeanFlapMainViewManger sharedManger] fetchWillViewFilmSucceed:^(BFWillHeadViewModel *resultModel) {
+        self -> _myView.headView.willHeadView.willModel = [[BFWillHeadViewModel alloc] init];
+        self -> _myView.headView.willHeadView.willModel = resultModel;
+        NSNotification *willNSNoti = [NSNotification notificationWithName:@"willShowNoti" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:willNSNoti];
+    } error:^(NSError *error) {
+        NSLog(@"willShowError");
+    }];
+    [_myView.tableView reloadData];
 }
 
 - (void)creatView {
@@ -55,6 +62,14 @@
     for (UIButton *exButton in self.myView.buttonArray) {
         [exButton addTarget:self action:@selector(press:) forControlEvents:UIControlEventTouchUpInside];
     }
+    for (UIButton *filmButton in _myView.headView.nowHeadView.filmButtonArray) {
+        [filmButton addTarget:self action:@selector(pressFilm) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    for (UIButton *exButton in _myView.headView.willHeadView.filmButtonArray) {
+        [exButton addTarget:self action:@selector(pressFilm) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     self.myView.viewToViewControllerDelegate = self;
     self.myView.showScrollView.delegate = self;
 }
@@ -77,6 +92,11 @@
     }];
     
     [self.myView.showScrollView setContentOffset:CGPointMake([UIScreen mainScreen].bounds.size.width * (button.tag - 100), 0)];
+}
+
+- (void)pressFilm {
+    BFSmallFilmViewController *film = [[BFSmallFilmViewController alloc] init];
+    [self presentViewController:film animated:NO completion:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -103,16 +123,9 @@
     [self presentViewController:root animated:NO completion:nil];
 }
 
-
-//去掉导航栏
-- (void)viewWillAppear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)cellToViewController {
-    BFSmallFilmViewController *film = [[BFSmallFilmViewController alloc] init];
-    [self presentViewController:film animated:NO completion:nil];
-}
+//- (void)cellToViewController {
+//
+//}
 
 /*
 #pragma mark - Navigation

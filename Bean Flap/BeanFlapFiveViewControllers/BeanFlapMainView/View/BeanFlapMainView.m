@@ -70,17 +70,23 @@
         
         self.tableView = [[UITableView alloc] init];
         [self.showScrollView addSubview:self.tableView];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        [self.tableView registerClass:[BFMainViewButtonTableViewCell class] forCellReuseIdentifier:@"buttonCell"];
+//        self.tableView.delegate = self;
+//        self.tableView.dataSource = self;
+//        [self.tableView registerClass:[BFMainViewButtonTableViewCell class] forCellReuseIdentifier:@"buttonCell"];
+        
+        self.headView = [[BFMainHeadView alloc] init];
+        _tableView.tableHeaderView = _headView;
 
-        self.viewToViewControllerDelegate = self;
+        UIView *view = [[UIView alloc] init];
+        _tableView.tableFooterView = view;
+//        self.viewToViewControllerDelegate = self;
         
         UIImageView *lineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bean-Flap-Line.png"]];
         lineImageView.frame = CGRectMake(0, 167, [UIScreen mainScreen].bounds.size.width, 1);
         [self addSubview:lineImageView];
         
         self.showAllButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+         [_headView addSubview:_showAllButton];
         [self.showAllButton setImage:[[UIImage imageNamed:@"Bean-Flap-Arrow-Right.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
         
         self.blackLineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bean-Flap-BlackLine.png"]];
@@ -98,11 +104,25 @@
         make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
     }];
     
+    [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@(0));
+        make.top.equalTo(@(0));
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
+    }];
+    
     [self.showScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(0));
         make.top.equalTo(@(165));
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
         make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
+    }];
+    
+    [self.showAllButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@([UIScreen mainScreen].bounds.size.width - 30));
+        make.top.equalTo(@(35));
+        make.width.equalTo(@(20));
+        make.height.equalTo(@(20));
     }];
     
     [_blackLineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -113,43 +133,26 @@
     }];
 
 }
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BFMainViewButtonTableViewCell *buttonCell = [self.tableView dequeueReusableCellWithIdentifier:@"buttonCell" ];
+    BFMainViewButtonTableViewCell *buttonCell = [self.tableView dequeueReusableCellWithIdentifier:@"buttonCell" forIndexPath:indexPath];
     buttonCell.selectionStyle = UIAccessibilityTraitNone;
     [buttonCell addSubview:self.showAllButton];
     buttonCell.cellToTableViewDelegate = self;
-    buttonCell.filmNameArray = [[NSMutableArray alloc] init];
-    if (_title) {
-        [buttonCell.filmNameArray addObject:_title];
-        [buttonCell.filmNameArray addObject:@"中国机长"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-    } else {
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"中国机长"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-        [buttonCell.filmNameArray addObject:@"我和我的祖国"];
-    }
-    
-//    self.passFilmTitleImageGradeDelegate = self;
+
+    self.passFilmTitleImageGradeDelegate = self;
     NSLog(@"ViewTitle ==  %@", _title);
-//    buttonCell.filmNameArray[0] = _title;
+    buttonCell.filmNameArray[0] = _title;
     NSLog(@" buttonCell.filmNameArray[0] ==  %@", buttonCell.filmNameArray[0]);
-//    buttonCell.filmNameArray = @[_title, _title, _title, _title, _title, _title];
-    
+    buttonCell.filmNameArray = @[_title, _title, _title, _title, _title, _title];
+
     [self.showAllButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@([UIScreen mainScreen].bounds.size.width - 30));
         make.top.equalTo(@(35));
         make.width.equalTo(@(20));
         make.height.equalTo(@(20));
     }];
-    
-    
+
     return buttonCell;
 }
 
@@ -160,7 +163,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 700;
 }
-
+*/
 - (void)press {
     [self.viewToViewControllerDelegate cellToViewController];
 }

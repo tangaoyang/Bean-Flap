@@ -22,13 +22,6 @@
     return  YES;
 }
 
-//+ (JSONKeyMapper *)keyMapper{
-//    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-//                                                       @"original_title": @"original_title",
-//                                                       @"rating.average": @"average",
-//                                                       @"images.medium": @"image"}];
-//}
-
 @end
 
 @implementation BFRatingModel

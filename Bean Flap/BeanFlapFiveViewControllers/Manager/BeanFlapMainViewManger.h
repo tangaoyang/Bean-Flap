@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BeanFlapMainViewModel.h"
+#import "BFWillHeadViewModel.h"
 
 typedef void (^BFMainViewNowBlock)(BeanFlapMainViewModel *mainViewNowModel);
+typedef void (^BFWillShowBlock)(BFWillHeadViewModel *succeedBlock);
 
 typedef void (^ErrorBlock)(NSError * _Nonnull error);
 
@@ -19,8 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedManger;
 
-//获取当日最新数据
+//获取影院热映数据
 - (void)fetchMainViewFilmSucceed:(BFMainViewNowBlock) succeedBlock error:(ErrorBlock) errorBlock;
+//获取即将上映数据
+- (void)fetchWillViewFilmSucceed:(BFWillShowBlock) succeedBlock error:(ErrorBlock) errorBlock;
+//获取想看人数
+//- (void)fetchWantSeeCountSucceed:(NSString *) count error:(ErrorBlock) errorBlock;
 
 @end
 

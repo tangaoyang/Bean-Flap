@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BFMainViewButtonTableViewCell.h"
+#import "BFMainHeadView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,6 +35,7 @@ CellToTableViewDelegate
 @property (nonatomic, strong) UIScrollView *showScrollView;
 @property (nonatomic, strong) UIImageView *blackLineImageView;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) BFMainHeadView *headView;
 @property id <ViewToViewControllerDelegate> viewToViewControllerDelegate;
 
 @end

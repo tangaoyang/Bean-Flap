@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BeanFlapMainView.h"
+#import "BFWillHeadViewModel.h"
 #import "BeanFlapMainViewModel.h"
 #import "BeanFlapMainViewManger.h"
 
