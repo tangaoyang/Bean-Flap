@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BeanFlapFilmListView.h"
 #import "BeanFlapFilmListModel.h"
+#import "BeanFlapMainViewModel.h"
+#import "BeanFlapMainViewManger.h"
+#import "BFSmallFilmViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +22,8 @@ UIScrollViewDelegate
 >
 
 @property (nonatomic, strong) BeanFlapFilmListView *listView;
-@property (nonatomic, strong) BeanFlapFilmListModel *listModel;
+@property (nonatomic, strong) BeanFlapMainViewModel *nowListModel;
+@property (nonatomic, strong) BeanFlapMainViewModel *willListModel;
 
 @end
 

@@ -12,6 +12,10 @@
 
 @end
 
+@protocol BFCastsModel
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BFRatingModel : JSONModel
@@ -26,9 +30,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface BFCastsModel : JSONModel
+
+@property (nonatomic, strong) NSString *name;
+
+@end
+
 @interface BFSubjectsModel : JSONModel
 @property (nonatomic, strong) BFRatingModel *rating;
+@property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSArray *genres;
+@property (nonatomic, strong) NSArray *pubdates;
+@property (nonatomic, strong) NSString *year;
+@property (nonatomic, strong) NSString *collect_count;
+@property (nonatomic, strong) NSArray<BFCastsModel> *casts;
 @property (nonatomic, strong) BFImagesModel *images;
 
 @end
@@ -37,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *total;
 @property (nonatomic, copy) NSArray<BFSubjectsModel> *subjects;
+@property (nonatomic, strong) NSString *id;
 
 @end
 

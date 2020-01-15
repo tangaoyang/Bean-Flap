@@ -16,8 +16,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     self.filmNameArray = [[NSMutableArray alloc] init];
-    NSLog(@"123");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveTitle:) name:@"titleCenter" object:nil];
+//    NSLog(@"123");
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveTitle:) name:@"titleCenter" object:nil];
     
     self.FilmscrollView = [[UIScrollView alloc] init];
     [self addSubview:self.FilmscrollView];
@@ -132,16 +132,16 @@
     
 }
 
-- (void)receiveTitle:(NSNotification *)noti {
-    NSLog(@"before  ==  %@", _filmNameArray);
-    [self.filmNameArray addObject:@"我和我的祖国"];
-    [self.filmNameArray addObject:[noti.userInfo objectForKey:@"title"]];
-    [self.filmNameArray addObject:@"中国机长"];
-    [self.filmNameArray addObject:@"我和我的祖国"];
-    [self.filmNameArray addObject:@"我和我的祖国"];
-    [self.filmNameArray addObject:@"我和我的祖国"];
-    NSLog(@"_filmNameArray   ==    %@", _filmNameArray);
-}
+//- (void)receiveTitle:(NSNotification *)noti {
+//    NSLog(@"before  ==  %@", _filmNameArray);
+//    [self.filmNameArray addObject:@"我和我的祖国"];
+//    [self.filmNameArray addObject:[noti.userInfo objectForKey:@"title"]];
+//    [self.filmNameArray addObject:@"中国机长"];
+//    [self.filmNameArray addObject:@"我和我的祖国"];
+//    [self.filmNameArray addObject:@"我和我的祖国"];
+//    [self.filmNameArray addObject:@"我和我的祖国"];
+//    NSLog(@"_filmNameArray   ==    %@", _filmNameArray);
+//}
 
 - (void)layoutSubviews {
     [super layoutSubviews];

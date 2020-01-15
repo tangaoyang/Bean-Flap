@@ -15,24 +15,23 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     self.filmButton = [[UIButton alloc] init];
-    self.filmButton.backgroundColor = [UIColor blackColor];
     self.filmButton.layer.masksToBounds = YES;
     self.filmButton.layer.cornerRadius = 5;
     [self addSubview:self.filmButton];
     
     self.filmNameLabel = [[UILabel alloc] init];
     [self addSubview:self.filmNameLabel];
-    self.filmNameLabel.text = @"这是电影名";
     self.filmNameLabel.font = [UIFont systemFontOfSize:20];
     self.filmNameLabel.textColor = [UIColor blackColor];
     
     self.starImageView = [[UIImageView alloc] init];
-    self.starImageView.backgroundColor = [UIColor orangeColor];
-    [self addSubview:self.starImageView];
+    [self addSubview:_starImageView];
+    _starImageView.frame = CGRectMake(150, 60, 80, 15);
+//    self.starImageView.backgroundColor = [UIColor orangeColor];
     
     self.contentLabel = [[UILabel alloc] init];
     [self addSubview: self.contentLabel];
-    self.contentLabel.text = @"这是内容";
+    _contentLabel.numberOfLines = 3;
     self.contentLabel.font = [UIFont systemFontOfSize:12];
     self.contentLabel.textColor = [UIColor colorWithRed:0.67 green:0.66 blue:0.67 alpha:1.0];
     
@@ -41,9 +40,6 @@
     self.buyButton.layer.masksToBounds = YES;
     self.buyButton.layer.borderWidth = 1;
     self.buyButton.layer.cornerRadius = 5;
-    self.buyButton.layer.borderColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.48 alpha:1.0].CGColor;
-    [self.buyButton setTitle:@"购票" forState:UIControlStateNormal];
-    self.buyButton.tintColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.48 alpha:1.0];
     [self.buyButton addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
     
     self.sawLabel = [[UILabel alloc] init];
@@ -54,7 +50,7 @@
     
     self.scoreLabel = [[UILabel alloc] init];
     [self addSubview:self.scoreLabel];
-    self.scoreLabel.text = @"8.0";
+    _scoreLabel.text = @"5";
     self.scoreLabel.font = [UIFont systemFontOfSize:12];
     self.scoreLabel.textColor = [UIColor colorWithRed:0.67 green:0.66 blue:0.67 alpha:1.0];
     
@@ -74,16 +70,16 @@
     [self.filmNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(150));
         make.top.equalTo(@(20));
-        make.width.equalTo(@(200));
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width - 140));
         make.height.equalTo(@(21));
     }];
-    
+    /*
     [self.starImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(150));
         make.top.equalTo(@(60));
         make.width.equalTo(@(80));
         make.height.equalTo(@(15));
-    }];
+    }];*/
     
     [self.scoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(235));
@@ -94,8 +90,8 @@
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(150));
-        make.top.equalTo(@(70));
-        make.width.equalTo(@(200));
+        make.top.equalTo(@(77));
+        make.width.equalTo(@(135));
         make.height.equalTo(@(50));
     }];
     
@@ -107,7 +103,7 @@
     }];
     
     [self.sawLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@(295));
+        make.left.equalTo(@(297));
         make.top.equalTo(@(92));
         make.width.equalTo(@(85));
         make.height.equalTo(@(15));

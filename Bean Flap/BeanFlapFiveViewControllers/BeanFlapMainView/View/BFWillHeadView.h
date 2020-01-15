@@ -23,7 +23,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *dayLabelArray;
 @property (nonatomic, strong) NSMutableArray *dayShowArray;
 @property (nonatomic, strong) NSMutableArray *monthShowArray;
+@property (nonatomic, strong) NSMutableArray *filmIdArray;
 @property (nonatomic, strong) BFWillHeadViewModel *willModel;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModelone;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModeltwo;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModelthree;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModelfour;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModelfive;
+@property (nonatomic, strong) BFWillSubjectsModel *subjectModelsix;
+@property (nonatomic, strong) UIImage *imageOne;
+@property (nonatomic, strong) UIImage *imageTwo;
+@property (nonatomic, strong) UIImage *imageThree;
+@property (nonatomic, strong) UIImage *imageFour;
+@property (nonatomic, strong) UIImage *imageFive;
+@property (nonatomic, strong) UIImage *imageSix;
 
 @end
 

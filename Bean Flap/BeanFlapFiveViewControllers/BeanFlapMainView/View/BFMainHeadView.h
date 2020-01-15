@@ -14,6 +14,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BFMainHeadView : UIView
+<
+UITableViewDelegate,
+UITableViewDataSource
+>
 
 @property (nonatomic, strong) NSMutableArray *bigButtonArray;
 @property (nonatomic, strong) NSArray *bigPartArray;

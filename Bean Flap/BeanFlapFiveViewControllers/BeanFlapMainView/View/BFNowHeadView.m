@@ -8,6 +8,7 @@
 
 #import "BFNowHeadView.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
 
 @implementation BFNowHeadView
 
@@ -22,7 +23,10 @@
         self.filmGradeArray = [[NSMutableArray alloc] init];
         self.filmGradeImageArray = [[NSMutableArray alloc] init];
         self.filmNameArray = [[NSMutableArray alloc] init];
+        self.filmImageArray = [[NSMutableArray alloc] init];
         self.buttonImageArray = [[NSMutableArray alloc] init];
+        self.filmIdArray = [[NSMutableArray alloc] init];
+        
         [self.filmNameArray addObject:@"我和我的祖国"];
         [self.filmNameArray addObject:@"123"];
         [self.filmNameArray addObject:@"中国机长"];
@@ -91,63 +95,57 @@
 }
 
 - (void)receive {
-    NSLog(@"receive");
+//    NSLog(@"receive");
     
     BFSubjectsModel *subjectModelone = [[BFSubjectsModel alloc] init];
     subjectModelone = _myModel.subjects[0];
+    [_filmIdArray addObject:subjectModelone.id];
     
     BFSubjectsModel *subjectModeltwo = [[BFSubjectsModel alloc] init];
     subjectModeltwo = _myModel.subjects[1];
+    [_filmIdArray addObject:subjectModeltwo.id];
     
     BFSubjectsModel *subjectModelthree = [[BFSubjectsModel alloc] init];
     subjectModelthree = _myModel.subjects[2];
+    [_filmIdArray addObject:subjectModelthree.id];
     
     BFSubjectsModel *subjectModelfour = [[BFSubjectsModel alloc] init];
     subjectModelfour = _myModel.subjects[3];
+    [_filmIdArray addObject:subjectModelfour.id];
     
     BFSubjectsModel *subjectModelfive = [[BFSubjectsModel alloc] init];
     subjectModelfive = _myModel.subjects[4];
+    [_filmIdArray addObject:subjectModelfive.id];
     
     BFSubjectsModel *subjectModelsix = [[BFSubjectsModel alloc] init];
     subjectModelsix = _myModel.subjects[5];
+    [_filmIdArray addObject:subjectModelsix.id];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self -> _filmNameArray[0] = subjectModelone.title;
-        NSString *imageStrOne = [NSString stringWithFormat:@"%@", subjectModelone.images.medium];
-        NSData *imageDataOne = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrOne]];
-        UIImage *imageOne = [UIImage imageWithData:imageDataOne];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModelone.images.medium]];
         self -> _filmGradeArray[0]  = [NSString stringWithFormat:@"%0.1f", subjectModelone.rating.average];
         
         self -> _filmNameArray[1] = subjectModeltwo.title;
-        NSString *imageStrTwo = [NSString stringWithFormat:@"%@", subjectModeltwo.images.medium];
-        NSData *imageDataTwo = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrTwo]];
-        UIImage *imageTwo = [UIImage imageWithData:imageDataTwo];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModeltwo.images.medium]];
         self -> _filmGradeArray[1]  = [NSString stringWithFormat:@"%0.1f", subjectModeltwo.rating.average];
         
         self -> _filmNameArray[2] = subjectModelthree.title;
-        NSString *imageStrThree = [NSString stringWithFormat:@"%@", subjectModelthree.images.medium];
-        NSData *imageDataThree = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrThree]];
-        UIImage *imageThree = [UIImage imageWithData:imageDataThree];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModelthree.images.medium]];
         self -> _filmGradeArray[2]  = [NSString stringWithFormat:@"%0.1f", subjectModelthree.rating.average];
         
         self -> _filmNameArray[3] = subjectModelfour.title;
-        NSString *imageStrFour = [NSString stringWithFormat:@"%@", subjectModelfour.images.medium];
-        NSData *imageDataFour = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrFour]];
-        UIImage *imageFour = [UIImage imageWithData:imageDataFour];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModelfour.images.medium]];
         self -> _filmGradeArray[3]  = [NSString stringWithFormat:@"%0.1f", subjectModelfour.rating.average];
         
         self -> _filmNameArray[4] = subjectModelfive.title;
-        NSString *imageStrFive = [NSString stringWithFormat:@"%@", subjectModelfive.images.medium];
-        NSData *imageDataFive = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrFive]];
-        UIImage *imageFive = [UIImage imageWithData:imageDataFive];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModelfive.images.medium]];
         self -> _filmGradeArray[4]  = [NSString stringWithFormat:@"%0.1f", subjectModelfive.rating.average];
         
         self -> _filmNameArray[5] = subjectModelsix.title;
-        NSString *imageStrSix = [NSString stringWithFormat:@"%@", subjectModelsix.images.medium];
-        NSData *imageDataSix = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrSix]];
-        UIImage *imageSix = [UIImage imageWithData:imageDataSix];
-        
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", subjectModelsix.images.medium]];
         self -> _filmGradeArray[5]  = [NSString stringWithFormat:@"%0.1f", subjectModelsix.rating.average];
+        
         NSArray *labelArray = [NSArray arrayWithArray:self -> _filmnameLabelArray];
         NSArray *buttonArray = [NSArray arrayWithArray:self -> _filmButtonArray];
         NSArray *gradeArray = [NSArray arrayWithArray:self -> _filmGradeLabelArray];
@@ -168,22 +166,13 @@
             j++;
         }
         for (UIButton *exButton in buttonArray) {
-            if (k == 0) {
-                [exButton setImage:imageOne forState:UIControlStateNormal];
-            } else if (k == 1) {
-                [exButton setImage:imageTwo forState:UIControlStateNormal];
-            } else if (k == 2) {
-                [exButton setImage:imageThree forState:UIControlStateNormal];
-            } else if (k == 3) {
-                [exButton setImage:imageFour forState:UIControlStateNormal];
-            } else if (k == 4) {
-                [exButton setImage:imageFive forState:UIControlStateNormal];
-            } else {
-                [exButton setImage:imageSix forState:UIControlStateNormal];
-            }
+            exButton.tag = [self -> _filmIdArray[k] integerValue];
+            [exButton.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", self -> _filmImageArray[k]]] placeholderImage:[UIImage imageNamed:@"loading.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                [exButton setImage:image forState:UIControlStateNormal];
+            }];
             k++;
         }
-        
+       
         for (int i = 0; i < 6; i++) {
             double grade = [self -> _filmGradeArray[i] doubleValue];
             if (grade == 0) {

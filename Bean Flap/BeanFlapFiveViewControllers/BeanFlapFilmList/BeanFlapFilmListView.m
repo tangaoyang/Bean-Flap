@@ -18,6 +18,22 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
+        self.filmNameArray = [[NSMutableArray alloc] init];
+//        self.filmGradeImageArray = [[NSMutableArray alloc] init];
+        self.filmContentArray = [[NSMutableArray alloc] init];
+        self.filmSawArray = [[NSMutableArray alloc] init];
+        self.filmGradeArray = [[NSMutableArray alloc] init];
+        self.filmImageArray = [[NSMutableArray alloc] init];
+        self.filmIdArray = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < 20; i++) {
+//            [_filmNameArray addObject:@"123"];
+            [_filmGradeArray addObject:@"5"];
+            [_filmContentArray addObject:@"95123"];
+            [_filmSawArray addObject:@"1234"];
+            [_filmImageArray addObject:[UIImage imageNamed:@"Bean-Flap-Logo.png"]];
+        }
+        
         self.backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self addSubview:self.backButton];
         [self.backButton setImage:[[UIImage imageNamed:@"BeanFlapFilmBack.png"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal]forState:UIControlStateNormal];
@@ -67,6 +83,7 @@
         
         self.blackLineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bean-Flap-BlackLine.png"]];
         [_listScrollView addSubview:_blackLineImageView];
+        
     }
     return self;
 }
@@ -74,6 +91,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     int i = 0;
+    
     for (UIButton *exButton in self.buttonArray) {
         [exButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@([UIScreen mainScreen].bounds.size.width / 3 * i));
@@ -133,15 +151,62 @@
         make.height.equalTo(@(2));
     }];
 
-    
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BFFilmListTableViewCell *filmCell = [tableView dequeueReusableCellWithIdentifier:@"filmCell" forIndexPath:indexPath];
+    
+    if (_filmNameArray.count > 0) {
+        filmCell.filmNameLabel.text = _filmNameArray[indexPath.section];
+    }
+    filmCell.scoreLabel.text = _filmGradeArray[indexPath.section];
+    [filmCell.filmButton setImage: _filmImageArray[indexPath.section] forState:UIControlStateNormal];
+    filmCell.contentLabel.text = _filmContentArray[indexPath.section];
+    filmCell.sawLabel.text = _filmSawArray[indexPath.section];
+    if ([_filmGradeArray[indexPath.section] isEqual: @"0.0"]) {
+        filmCell.buyButton.layer.borderColor = [UIColor colorWithRed:185/255.0 green:146/255.0 blue:77/255.0 alpha:1.0].CGColor;
+        [filmCell.buyButton setTitle:@"预售" forState:UIControlStateNormal];
+        filmCell.buyButton.tintColor = [UIColor colorWithRed:185/255.0 green:146/255.0 blue:77/255.0 alpha:1.0];
+        filmCell.scoreLabel.text = @"";
+    } else {
+        filmCell.buyButton.layer.borderColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.48 alpha:1.0].CGColor;
+        [filmCell.buyButton setTitle:@"购票" forState:UIControlStateNormal];
+        filmCell.buyButton.tintColor = [UIColor colorWithRed:0.95 green:0.45 blue:0.48 alpha:1.0];
+    }
+    [filmCell.filmButton addTarget:self action:@selector(showFilm) forControlEvents:UIControlEventTouchUpInside];
+    
+    double grade = [_filmGradeArray[indexPath.section] doubleValue];
+    if (grade == 0) {
+        UIImageView *nilImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BeanFlapNilImageView.jpg"]];
+        [filmCell.starImageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [filmCell.starImageView addSubview:nilImageView];
+        nilImageView.frame = filmCell.starImageView.bounds;
+    } else {
+        UIImageView *starImageView = [[UIImageView alloc] init];
+        for (int j = 0; j < 5; j++) {
+            UIImageView *starSingleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(16 * j, 0, 15, 15)];
+            if (grade - 2 >= 0) {
+                [starSingleImageView setImage:[UIImage imageNamed:@"BeanFlapStarLight.png"]];
+            } else if ((grade - 2 < 0) && (grade - 2 > -1)) {
+                [starSingleImageView setImage:[UIImage imageNamed:@"BeanFlapStarPart.png"]];
+            } else {
+                [starSingleImageView setImage:[UIImage imageNamed:@"BeanFlapStarUnlight.png"]];
+            }
+            grade -= 2;
+            [starImageView addSubview:starSingleImageView];
+        }
+        [filmCell.starImageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [filmCell.starImageView addSubview:starImageView];
+        starImageView.frame = filmCell.starImageView.bounds;
+    }
+    
     filmCell.selectionStyle = UIAccessibilityTraitNone;
     filmCell.celldelegate = self;
     return filmCell;
+}
+
+- (void)showFilm {
+    [self.buyViewToViewtrollerDelegate pressFilm];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -153,14 +218,22 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    if (_filmNameArray.count > 10) {
+        return _filmNameArray.count;
+    } else {
+        return 10;
+    }
 }
 
 - (void)addBuy {
     [self.buyViewToViewtrollerDelegate addBuyToViewController];
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNotification *noti = [NSNotification notificationWithName:@"film" object:self userInfo:@{@"index":_filmIdArray[indexPath.section]}];
+//    NSLog(@" _filmIdArray[indexPath.section] == %@", _filmIdArray[indexPath.section]);
+    [[NSNotificationCenter defaultCenter] postNotification:noti];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

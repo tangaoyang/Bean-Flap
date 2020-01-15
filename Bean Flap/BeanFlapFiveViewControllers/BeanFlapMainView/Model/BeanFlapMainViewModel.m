@@ -32,6 +32,14 @@
 
 @end
 
+@implementation BFCastsModel
+
++(BOOL)propertyIsOptional:(NSString *)propertyName{
+    return  YES;
+}
+
+@end
+
 @implementation BFImagesModel
 
 +(BOOL)propertyIsOptional:(NSString *)propertyName{

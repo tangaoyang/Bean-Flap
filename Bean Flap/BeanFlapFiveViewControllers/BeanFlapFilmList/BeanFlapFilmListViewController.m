@@ -20,6 +20,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[BeanFlapMainViewManger sharedManger] fetchMainViewFilmSucceed:^(BeanFlapMainViewModel *resultModel){
+        self.listView.listModel = [[BeanFlapMainViewModel alloc] init];
+        self -> _listView.listModel = resultModel;
+        NSNotification *nowListNoti = [NSNotification notificationWithName:@"nowList" object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:nowListNoti];
+    }error:^(NSError *error){
+        NSLog(@"nowListModel -- Error");
+    }];
+    [_listView.listTableView reloadData];
+    
     self.listView = [[BeanFlapFilmListView alloc] init];
     [self.view addSubview:self.listView];
     [self.listView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -29,13 +39,142 @@
         make.height.equalTo(self.view.mas_height);
     }];
     [self.listView.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    for (UIButton *exButton in self.listView.buttonArray) {
-        [exButton addTarget:self action:@selector(press:) forControlEvents:UIControlEventTouchUpInside];
-    }
+//    for (UIButton *exButton in self.listView.buttonArray) {
+//        [exButton addTarget:self action:@selector(press:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listData) name:@"nowList" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jumpView:) name:@"film" object:nil];
+    [_listView.listTableView addObserver:self forKeyPath:NSStringFromSelector(@selector(contentOffset)) options:NSKeyValueObservingOptionNew context:nil];
     self.listView.listScrollView.delegate = self;
     self.listView.buyViewToViewtrollerDelegate = self;
-    self.listModel = [[BeanFlapFilmListModel alloc] init];
+}
+
+- (void)listData{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *genresString;
+        NSString *actorString;
+        BFCastsModel *actorModel;
+        NSMutableArray *actorArray;
+        NSURL *imageUrl;
+        NSData *imageData;
+        UIImage *image;
+        for (int i = 0; i < 10; i++) {
+            actorArray = [[NSMutableArray alloc] init];
+            BFSubjectsModel *subjectModel = self -> _listView.listModel.subjects[i];
+            //id
+            [self -> _listView.filmIdArray addObject:subjectModel.id];
+            //电影名
+            [self -> _listView.filmNameArray addObject:subjectModel.title];
+            //电影评分
+            self -> _listView.filmGradeArray[i] = [NSString stringWithFormat:@"%0.1f", subjectModel.rating.average];
+            //电影分类
+            genresString = [subjectModel.genres componentsJoinedByString:@" "];
+            //电影图片
+            imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@", subjectModel.images.medium]];
+            imageData = [NSData dataWithContentsOfURL:imageUrl];
+            image = [UIImage imageWithData:imageData];
+            self -> _listView.filmImageArray[i] = image;
+            //看过人数
+            double count = [subjectModel.collect_count doubleValue];
+            if (count > 10000) {
+                count /= 10000;
+                self -> _listView.filmSawArray[i] = [NSString stringWithFormat:@"%0.1f万人看过", count];
+            } else {
+                self -> _listView.filmSawArray[i] = [NSString stringWithFormat:@"%0.0f人看过", count];
+            }
+            
+            //电影演员
+            for (int i = 0; i < subjectModel.casts.count; i++) {
+                actorModel = subjectModel.casts[i];
+                actorArray[i] = actorModel.name;
+            }
+            actorString = [actorArray componentsJoinedByString:@" "];
+            //电影上映地点
+            [self frameAdd:subjectModel string:genresString count:i actor:actorString];
+            
+        }
+        [self -> _listView.listTableView reloadData];
+    });
+}
+
+- (void)frameAdd:(BFSubjectsModel *)subjectModel string: (NSString *)  genresString count:(int) i actor:(NSString *)actorString{
+    NSURL *wantSeeCountUrl;
+    NSURLRequest *wantSeeCountRequest;
+    NSURLSession *wantSeeCountSession;
+    NSURLSessionDataTask *wantSeeCountData;
+    static NSString *filmFrame;
+    static NSString *string;
     
+    wantSeeCountUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://douban-api.zce.now.sh/v2/movie/subject/%@", subjectModel.id]];
+    wantSeeCountRequest = [NSURLRequest requestWithURL:wantSeeCountUrl];
+    wantSeeCountSession = [NSURLSession sharedSession];
+    wantSeeCountData = [wantSeeCountSession dataTaskWithRequest:wantSeeCountRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSDictionary *getDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^() {
+                filmFrame = [getDictionary[@"countries"] componentsJoinedByString:@" "];
+                //电影总简介
+                string = [NSString stringWithFormat:@"%@/%@/%@/%@", subjectModel.year, filmFrame, genresString, actorString];
+                self -> _listView.filmContentArray[i] = string;
+                [self -> _listView.listTableView reloadData];
+            });
+        } else {
+            NSLog(@"wantSeeCount -- Error");
+        }
+    }];
+    [wantSeeCountData resume];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([change[NSKeyValueChangeNewKey] CGPointValue].y > 1114) {
+        if (_listView.filmNameArray.count == 10) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *genresString;
+                NSString *actorString;
+                BFCastsModel *actorModel;
+                NSMutableArray *actorArray;
+                NSURL *imageUrl;
+                NSData *imageData;
+                UIImage *image;
+                for (int i = 10; i < 20; i++) {
+                    actorArray = [[NSMutableArray alloc] init];
+                    BFSubjectsModel *subjectModel = self -> _listView.listModel.subjects[i];
+                    //电影名
+                    [self -> _listView.filmNameArray addObject:subjectModel.title];
+                    //电影评分
+                    self -> _listView.filmGradeArray[i] = [NSString stringWithFormat:@"%0.1f", subjectModel.rating.average];
+                    //电影分类
+                    genresString = [subjectModel.genres componentsJoinedByString:@" "];
+                    //电影图片
+                    imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@", subjectModel.images.medium]];
+                    imageData = [NSData dataWithContentsOfURL:imageUrl];
+                    image = [UIImage imageWithData:imageData];
+                    self -> _listView.filmImageArray[i] = image;
+                    //看过人数
+                    double count = [subjectModel.collect_count doubleValue];
+                    if (count > 10000) {
+                        count /= 10000;
+                        self -> _listView.filmSawArray[i] = [NSString stringWithFormat:@"%0.1f万人看过", count];
+                    } else {
+                        self -> _listView.filmSawArray[i] = [NSString stringWithFormat:@"%0.0f人看过", count];
+                    }
+                    
+                    //电影演员
+                    for (int i = 0; i < subjectModel.casts.count; i++) {
+                        actorModel = subjectModel.casts[i];
+                        actorArray[i] = actorModel.name;
+                    }
+                    actorString = [actorArray componentsJoinedByString:@" "];
+                    //电影上映地点
+                    [self frameAdd:subjectModel string:genresString count:i actor:actorString];
+                    
+                }
+                
+                [self -> _listView.listTableView reloadData];
+            });
+        }
+    }
 }
 
 - (void)press:(UIButton *)button {
@@ -56,6 +195,15 @@
     }];
     
     [self.listView.listScrollView setContentOffset:CGPointMake([UIScreen mainScreen].bounds.size.width * (button.tag - 300), 0)];
+}
+
+- (void)jumpView:(NSNotification *) dic{
+    NSDictionary *getDictionary = dic.userInfo;
+    BFSmallFilmViewController *root = [[BFSmallFilmViewController alloc] init];
+    root.idString = getDictionary[@"index"];
+//    NSLog(@"root.idString == %@", root.idString);
+//    NSLog(@"getDictionary[@index] == %@", getDictionary[@"index"]);
+    [self presentViewController:root animated:NO completion:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

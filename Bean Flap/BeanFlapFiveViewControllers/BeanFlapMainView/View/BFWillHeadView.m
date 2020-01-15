@@ -8,6 +8,7 @@
 
 #import "BFWillHeadView.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
 
 @implementation BFWillHeadView
 
@@ -15,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        NSLog(@"123132");
+//        NSLog(@"123132");
         self.pickButtonArray = [[NSMutableArray alloc] init];
         self.wantLabelArray = [[NSMutableArray alloc] init];
         self.wantNumberArray = [[NSMutableArray alloc] init];
@@ -26,6 +27,7 @@
         self.filmNameArray = [[NSMutableArray alloc] init];
         self.filmButtonArray = [[NSMutableArray alloc] init];
         self.filmImageArray = [[NSMutableArray alloc] init];
+        self.filmIdArray = [[NSMutableArray alloc] init];
         
         [self.filmNameArray addObject:@"我和我的祖国"];
         [self.filmNameArray addObject:@"我和我的祖国"];
@@ -47,7 +49,7 @@
         [self.dayShowArray addObject:@"123"];
         [self.dayShowArray addObject:@"123"];
         [self.dayShowArray addObject:@"123"];
-        
+
         [self.monthShowArray addObject:@"123"];
         [self.monthShowArray addObject:@"123"];
         [self.monthShowArray addObject:@"123"];
@@ -92,162 +94,128 @@
             [self.pickButtonArray addObject:pickButton];
             
         }
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showData) name:@"willShowNoti" object:nil];
     }
     return self;
 }
 
-- (void)showData {
+-(void)showData {
+    self.subjectModelone = [[BFWillSubjectsModel alloc] init];
+    _subjectModelone = _willModel.subjects[0];
+    [_filmIdArray addObject:_subjectModelone.id];
     
-    BFWillSubjectsModel *subjectModelone = [[BFWillSubjectsModel alloc] init];
-    subjectModelone = _willModel.subjects[0];
+    self.subjectModeltwo = [[BFWillSubjectsModel alloc] init];
+    _subjectModeltwo = _willModel.subjects[1];
+    [_filmIdArray addObject:_subjectModeltwo.id];
     
-    BFWillSubjectsModel *subjectModeltwo = [[BFWillSubjectsModel alloc] init];
-    subjectModeltwo = _willModel.subjects[1];
+    self.subjectModelthree = [[BFWillSubjectsModel alloc] init];
+    _subjectModelthree = _willModel.subjects[2];
+    [_filmIdArray addObject:_subjectModelthree.id];
     
-    BFWillSubjectsModel *subjectModelthree = [[BFWillSubjectsModel alloc] init];
-    subjectModelthree = _willModel.subjects[2];
+    self.subjectModelfour = [[BFWillSubjectsModel alloc] init];
+    _subjectModelfour = _willModel.subjects[3];
+    [_filmIdArray addObject:_subjectModelfour.id];
     
-    BFWillSubjectsModel *subjectModelfour = [[BFWillSubjectsModel alloc] init];
-    subjectModelfour = _willModel.subjects[3];
+    self.subjectModelfive = [[BFWillSubjectsModel alloc] init];
+    _subjectModelfive = _willModel.subjects[4];
+    [_filmIdArray addObject:_subjectModelfive.id];
     
-    BFWillSubjectsModel *subjectModelfive = [[BFWillSubjectsModel alloc] init];
-    subjectModelfive = _willModel.subjects[4];
-    
-    BFWillSubjectsModel *subjectModelsix = [[BFWillSubjectsModel alloc] init];
-    subjectModelsix = _willModel.subjects[5];
+    self.subjectModelsix = [[BFWillSubjectsModel alloc] init];
+    _subjectModelsix = _willModel.subjects[5];
+    [_filmIdArray addObject:_subjectModelsix.id];
     
     dispatch_async(dispatch_get_main_queue(), ^() {
-        for (int i = 0; i < 6; i++) {
-            BFWillSubjectsModel *subjectModel;
-            if (i == 0) {
-                subjectModel = subjectModelone;
-            } else if (i == 1) {
-                subjectModel = subjectModeltwo;
-            } else if (i == 2) {
-                subjectModel = subjectModelthree;
-            } else if (i == 3) {
-                subjectModel = subjectModelfour;
-            } else if (i == 4) {
-                subjectModel = subjectModelfive;
-            } else if (i == 5) {
-                subjectModel = subjectModelsix;
-            }
-            NSURL *wantSeeCount = [NSURL URLWithString:[NSString stringWithFormat:@"https://douban-api.zce.now.sh/v2/movie/subject/%@", subjectModel.id]];
-            NSURLRequest *wantSeeCountRequest = [NSURLRequest requestWithURL:wantSeeCount];
-            NSURLSession *wantSeeCountSession = [NSURLSession sharedSession];
-            NSURLSessionDataTask *wantSeeCountData = [wantSeeCountSession dataTaskWithRequest:wantSeeCountRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                if (!error) {
-                    NSDictionary *getDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                    self -> _wantLabelArray[i] = getDictionary[@"wish_count"];
-                    NSLog(@" getDictionary[@wish_count] = %@", getDictionary[@"wish_count"]);
-//                    dispatch_async(dispatch_get_main_queue(), ^(){
-//                        int i = 0;
-//                        for (UILabel *exLabel in self -> _wantLabelArray) {
-//                            exLabel.text = [NSString stringWithFormat:@"%@人想看", self -> _wantNumberArray[i]];
-//                        }
-//                    });
-                } else {
-                    NSLog(@"wantSeeCount -- Error");
-                }
-            }];
-            [wantSeeCountData resume];
-        }
         
-//        self -> _wantNumberArray[0] = subjectModelone.collect_count;
-        self -> _filmNameArray[0] = subjectModelone.title;
-        self -> _dayShowArray[0] = [subjectModelone.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[0] = [subjectModelone.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrOne = [NSString stringWithFormat:@"%@", subjectModelone.images.medium];
-        NSData *imageDataOne = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrOne]];
-        UIImage *imageOne = [UIImage imageWithData:imageDataOne];
+        self -> _filmNameArray[0] = self -> _subjectModelone.title;
+        self -> _dayShowArray[0] = [self -> _subjectModelone.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[0] = [self -> _subjectModelone.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", self -> _subjectModelone.images.medium]];
         
-//        self -> _wantNumberArray[1] = subjectModeltwo.collect_count;
-        self -> _filmNameArray[1] = subjectModeltwo.title;
-        self -> _dayShowArray[1] = [subjectModeltwo.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[1] = [subjectModeltwo.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrTwo = [NSString stringWithFormat:@"%@", subjectModeltwo.images.medium];
-        NSData *imageDataTwo = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrTwo]];
-        UIImage *imageTwo = [UIImage imageWithData:imageDataTwo];
+        self -> _filmNameArray[1] = self -> _subjectModeltwo.title;
+        self -> _dayShowArray[1] = [self -> _subjectModeltwo.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[1] = [self -> _subjectModeltwo.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject: [NSString stringWithFormat:@"%@", self -> _subjectModeltwo.images.medium]];
         
-//        self -> _wantNumberArray[2] = subjectModelthree.collect_count;
-        self -> _filmNameArray[2] = subjectModelthree.title;
-        self -> _dayShowArray[2] = [subjectModelthree.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[2] = [subjectModelthree.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrThree = [NSString stringWithFormat:@"%@", subjectModelthree.images.medium];
-        NSData *imageDataThree = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrThree]];
-        UIImage *imageThree = [UIImage imageWithData:imageDataThree];
+        self -> _filmNameArray[2] = self -> _subjectModelthree.title;
+        self -> _dayShowArray[2] = [self -> _subjectModelthree.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[2] = [self -> _subjectModelthree.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", self -> _subjectModelthree.images.medium]];
         
-//        self -> _wantNumberArray[3] = subjectModelfour.collect_count;
-        self -> _filmNameArray[3] = subjectModelfour.title;
-        self -> _dayShowArray[3] = [subjectModelfour.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[3] = [subjectModelfour.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrFour = [NSString stringWithFormat:@"%@", subjectModelfour.images.medium];
-        NSData *imageDataFour = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrFour]];
-        UIImage *imageFour = [UIImage imageWithData:imageDataFour];
+        self -> _filmNameArray[3] = self -> _subjectModelfour.title;
+        self -> _dayShowArray[3] = [self -> _subjectModelfour.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[3] = [self -> _subjectModelfour.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", self -> _subjectModelfour.images.medium]];
         
-//        self -> _wantNumberArray[4] = subjectModelfive.collect_count;
-        self -> _filmNameArray[4] = subjectModelfive.title;
-        self -> _dayShowArray[4] = [subjectModelfive.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[4] = [subjectModelfive.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrFive = [NSString stringWithFormat:@"%@", subjectModelfive.images.medium];
-        NSData *imageDataFive = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrFive]];
-        UIImage *imageFive = [UIImage imageWithData:imageDataFive];
+        self -> _filmNameArray[4] = self -> _subjectModelfive.title;
+        self -> _dayShowArray[4] = [self -> _subjectModelfive.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[4] = [self -> _subjectModelfive.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", self -> _subjectModelfive.images.medium]];
         
-//        self -> _wantNumberArray[5] = subjectModelsix.collect_count;
-        self -> _filmNameArray[5] = subjectModelsix.title;
-        self -> _dayShowArray[5] = [subjectModelsix.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
-        self -> _monthShowArray[5] = [subjectModelsix.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
-        NSString *imageStrSix = [NSString stringWithFormat:@"%@", subjectModelsix.images.medium];
-        NSLog(@"imageStrSix = %@", imageStrSix);
-        NSData *imageDataSix = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStrSix]];
-        UIImage *imageSix = [UIImage imageWithData:imageDataSix];
-        
-        NSLog(@"_wantNumberArray == %@", self -> _wantNumberArray);
-//        NSLog(@"_dayShowArray == %@", self -> _dayShowArray);
-//        NSLog(@"_filmNameArray == %@", self -> _filmNameArray);
-//        NSLog(@"_filmImageArray == %@", self -> _filmImageArray);
-        
+        self -> _filmNameArray[5] = self -> _subjectModelsix.title;
+        self -> _dayShowArray[5] = [self -> _subjectModelsix.mainland_pubdate substringWithRange:NSMakeRange(8,2)];
+        self -> _monthShowArray[5] = [self -> _subjectModelsix.mainland_pubdate substringWithRange:NSMakeRange(5,2)];
+        [self -> _filmImageArray addObject:[NSString stringWithFormat:@"%@", self -> _subjectModelsix.images.medium]];
         int i = 0, j = 0, k = 0, h = 0;
-        
-        
         for (UILabel *exLabel in self -> _dayLabelArray) {
             exLabel.text = self -> _dayShowArray[j];
+//            NSLog(@"self -> _monthShowArray[j] == %@", self -> _monthShowArray[j]);
             exLabel.text = [NSString stringWithFormat:@"  %@月%@日", self -> _monthShowArray[j], self -> _dayShowArray[j]];
             j++;
         }
+        
         for (UILabel *exLabel in self -> _filmLabelArray) {
             exLabel.text = self -> _filmNameArray[k];
             k++;
         }
         
         for (UIButton *exButton in self -> _filmButtonArray) {
-            /*NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self -> _filmImageArray[h]]];
-            NSLog(@"imageUrl == %@", imageUrl);
+            NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self -> _filmImageArray[h]]];
             NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
-            UIImage *image = [UIImage imageWithData:imageData];
-            NSLog(@"%@", image);
-            [exButton setImage:image forState:UIControlStateNormal];
-            h++;*/
-            if (h == 0) {
-                [exButton setImage:imageOne forState:UIControlStateNormal];
-                NSLog(@"imageOne == %@", imageOne);
-            } else if (h == 1) {
-                [exButton setImage:imageTwo forState:UIControlStateNormal];
-                NSLog(@"imageTwo == %@", imageTwo);
-            } else if (h == 2) {
-                [exButton setImage:imageThree forState:UIControlStateNormal];
-            } else if (h == 3) {
-                [exButton setImage:imageFour forState:UIControlStateNormal];
-            } else if (h == 4) {
-                [exButton setImage:imageFive forState:UIControlStateNormal];
-            } else {
-                [exButton setImage:imageSix forState:UIControlStateNormal];
-            }
+            [exButton setImage:[[UIImage imageWithData:imageData] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            exButton.tag = [self -> _filmIdArray[h] integerValue];
             h++;
         }
+        
+        for (UILabel *exLabel in self -> _wantLabelArray) {
+            BFWillSubjectsModel *subjectModel;
+            if (i == 0) {
+                subjectModel = self -> _subjectModelone;
+            } else if (i == 1) {
+                subjectModel = self -> _subjectModeltwo;
+            } else if (i == 2) {
+                subjectModel = self -> _subjectModelthree;
+            } else if (i == 3) {
+                subjectModel = self -> _subjectModelfour;
+            } else if (i == 4) {
+                subjectModel = self -> _subjectModelfive;
+            } else if (i == 5) {
+                subjectModel = self -> _subjectModelsix;
+            }
+            [self LabelText:subjectModel label:exLabel];
+            i++;
+        }
+        
+        
     });
+}
+
+- (void)LabelText:(BFWillSubjectsModel *)subjectModel label:(UILabel *)label {
+    NSURL *wantSeeCount = [NSURL URLWithString:[NSString stringWithFormat:@"https://douban-api.zce.now.sh/v2/movie/subject/%@", subjectModel.id]];
+    NSURLRequest *wantSeeCountRequest = [NSURLRequest requestWithURL:wantSeeCount];
+    NSURLSession *wantSeeCountSession = [NSURLSession sharedSession];
+    NSURLSessionDataTask *wantSeeCountData = [wantSeeCountSession dataTaskWithRequest:wantSeeCountRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSDictionary *getDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//            [self -> _wantLabelArray addObject:getDictionary[@"wish_count"]];
+            dispatch_async(dispatch_get_main_queue(), ^() {
+                [label setText:[NSString stringWithFormat:@"%@人想看", getDictionary[@"wish_count"]]];
+            });
+//            NSLog(@" getDictionary[@wish_count] = %@", getDictionary[@"wish_count"]);
+        } else {
+            NSLog(@"wantSeeCount -- Error");
+        }
+    }];
+    [wantSeeCountData resume];
 }
 
 - (void)layoutSubviews {

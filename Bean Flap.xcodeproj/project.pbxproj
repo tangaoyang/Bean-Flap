@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		1AA9F6EF475AE038E1274435 /* libPods-Bean Flap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4986A3BCE62358EBEDEB437 /* libPods-Bean Flap.a */; };
+		86033D34237EE1B90062B717 /* BFSmallFilmPhotosModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86033D33237EE1B90062B717 /* BFSmallFilmPhotosModel.m */; };
+		86062A2E23806523009C88FF /* BeanFlapQuestion.png in Resources */ = {isa = PBXBuildFile; fileRef = 86062A2D23806523009C88FF /* BeanFlapQuestion.png */; };
+		86062A3023807C2E009C88FF /* BeanFlapPick.png in Resources */ = {isa = PBXBuildFile; fileRef = 86062A2F23807C2E009C88FF /* BeanFlapPick.png */; };
 		8607E95F234F4B69006B9D57 /* Bean-Flap-Scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8607E95E234F4B69006B9D57 /* Bean-Flap-Scan.png */; };
 		8607E961234F4C67006B9D57 /* Bean-Flap-Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 8607E960234F4C67006B9D57 /* Bean-Flap-Search.png */; };
 		8607E963234F4C6B006B9D57 /* Bean-Flap-Message.png in Resources */ = {isa = PBXBuildFile; fileRef = 8607E962234F4C6B006B9D57 /* Bean-Flap-Message.png */; };
 		8607E966234F4D21006B9D57 /* BeanFlapEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8607E965234F4D21006B9D57 /* BeanFlapEmptyViewController.m */; };
 		8607E968234F5816006B9D57 /* Bean-Flap-Line.png in Resources */ = {isa = PBXBuildFile; fileRef = 8607E967234F5816006B9D57 /* Bean-Flap-Line.png */; };
 		8607E96A234F586C006B9D57 /* Bean-Flap-BlackLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 8607E969234F586C006B9D57 /* Bean-Flap-BlackLine.png */; };
-		8609D6A5235DE2AE00D87A86 /* BFSmallFilmViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8609D6A4235DE2AE00D87A86 /* BFSmallFilmViewModel.m */; };
+		86087B2D2372EE8300199D93 /* BeanFlapImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 86087B2C2372EE8300199D93 /* BeanFlapImage.jpg */; };
+		86087B2F23741C7E00199D93 /* load.gif in Resources */ = {isa = PBXBuildFile; fileRef = 86087B2E23741C7E00199D93 /* load.gif */; };
+		86087B322375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86087B312375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.m */; };
+		86087B352375AFE700199D93 /* BFSmallFilmContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86087B342375AFE700199D93 /* BFSmallFilmContentTableViewCell.m */; };
+		86087B3C2375B54300199D93 /* BFSmallFilmSeeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 86087B3B2375B54300199D93 /* BFSmallFilmSeeButton.m */; };
+		86087B3E23769D3E00199D93 /* BeanFlapSaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 86087B3D23769D3E00199D93 /* BeanFlapSaw.png */; };
+		86087B4723769E6D00199D93 /* BFSmallFilmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86087B4623769E6D00199D93 /* BFSmallFilmModel.m */; };
+		86087B4A23771A4500199D93 /* BFSmallFilmTypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 86087B4923771A4500199D93 /* BFSmallFilmTypeButton.m */; };
 		8609D6A7235DE3EC00D87A86 /* BeanFlapMore.png in Resources */ = {isa = PBXBuildFile; fileRef = 8609D6A6235DE3EC00D87A86 /* BeanFlapMore.png */; };
 		8609D6A9235DE72B00D87A86 /* BeanFlapWhiteBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8609D6A8235DE72B00D87A86 /* BeanFlapWhiteBack.png */; };
 		860A964023572FB700585F60 /* BeanFlapFilmBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 860A963F23572FB700585F60 /* BeanFlapFilmBack.png */; };
@@ -55,7 +65,11 @@
 		86163949235B609800DED4A2 /* BeanFlapFilmPick.png in Resources */ = {isa = PBXBuildFile; fileRef = 86163948235B609800DED4A2 /* BeanFlapFilmPick.png */; };
 		861A55002361BED000370DE9 /* BeanFlapMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */; };
 		861A55032361BF0600370DE9 /* BeanFlapMainViewManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */; };
+		861B042923895E3F008FA53F /* BFSmallFilmLongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 861B042823895E3F008FA53F /* BFSmallFilmLongModel.m */; };
+		861B043223897D17008FA53F /* BFSmallFilmLongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 861B043123897D17008FA53F /* BFSmallFilmLongTableViewCell.m */; };
 		861B1BEC2369D5420078A48E /* BFWillHeadViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 861B1BEB2369D5420078A48E /* BFWillHeadViewModel.m */; };
+		86238B872378090900CDE422 /* BeanFlapTicket.png in Resources */ = {isa = PBXBuildFile; fileRef = 86238B862378090900CDE422 /* BeanFlapTicket.png */; };
+		86238B8923780C3400CDE422 /* BeanFlapArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86238B8823780C3400CDE422 /* BeanFlapArrow.png */; };
 		8664C56F235C98FB006069AB /* BeanFlapStarPart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56C235C98FB006069AB /* BeanFlapStarPart.png */; };
 		8664C570235C98FB006069AB /* BeanFlapStarLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56D235C98FB006069AB /* BeanFlapStarLight.png */; };
 		8664C571235C98FB006069AB /* BeanFlapStarUnlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 8664C56E235C98FB006069AB /* BeanFlapStarUnlight.png */; };
@@ -65,6 +79,10 @@
 
 /* Begin PBXFileReference section */
 		4BFEDFE8FFDD940FBD1EB6C6 /* Pods-Bean Flap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bean Flap.release.xcconfig"; path = "Target Support Files/Pods-Bean Flap/Pods-Bean Flap.release.xcconfig"; sourceTree = "<group>"; };
+		86033D32237EE1B90062B717 /* BFSmallFilmPhotosModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmPhotosModel.h; sourceTree = "<group>"; };
+		86033D33237EE1B90062B717 /* BFSmallFilmPhotosModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmPhotosModel.m; sourceTree = "<group>"; };
+		86062A2D23806523009C88FF /* BeanFlapQuestion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapQuestion.png; sourceTree = "<group>"; };
+		86062A2F23807C2E009C88FF /* BeanFlapPick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapPick.png; sourceTree = "<group>"; };
 		8607E95E234F4B69006B9D57 /* Bean-Flap-Scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Scan.png"; sourceTree = "<group>"; };
 		8607E960234F4C67006B9D57 /* Bean-Flap-Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Search.png"; sourceTree = "<group>"; };
 		8607E962234F4C6B006B9D57 /* Bean-Flap-Message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Message.png"; sourceTree = "<group>"; };
@@ -72,8 +90,19 @@
 		8607E965234F4D21006B9D57 /* BeanFlapEmptyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapEmptyViewController.m; sourceTree = "<group>"; };
 		8607E967234F5816006B9D57 /* Bean-Flap-Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-Line.png"; sourceTree = "<group>"; };
 		8607E969234F586C006B9D57 /* Bean-Flap-BlackLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bean-Flap-BlackLine.png"; sourceTree = "<group>"; };
-		8609D6A3235DE2AE00D87A86 /* BFSmallFilmViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmViewModel.h; sourceTree = "<group>"; };
-		8609D6A4235DE2AE00D87A86 /* BFSmallFilmViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmViewModel.m; sourceTree = "<group>"; };
+		86087B2C2372EE8300199D93 /* BeanFlapImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BeanFlapImage.jpg; sourceTree = "<group>"; };
+		86087B2E23741C7E00199D93 /* load.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = load.gif; sourceTree = "<group>"; };
+		86087B302375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmSelectUpTableViewCell.h; sourceTree = "<group>"; };
+		86087B312375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmSelectUpTableViewCell.m; sourceTree = "<group>"; };
+		86087B332375AFE700199D93 /* BFSmallFilmContentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmContentTableViewCell.h; sourceTree = "<group>"; };
+		86087B342375AFE700199D93 /* BFSmallFilmContentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmContentTableViewCell.m; sourceTree = "<group>"; };
+		86087B3A2375B54300199D93 /* BFSmallFilmSeeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmSeeButton.h; sourceTree = "<group>"; };
+		86087B3B2375B54300199D93 /* BFSmallFilmSeeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmSeeButton.m; sourceTree = "<group>"; };
+		86087B3D23769D3E00199D93 /* BeanFlapSaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapSaw.png; sourceTree = "<group>"; };
+		86087B4523769E6D00199D93 /* BFSmallFilmModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmModel.h; sourceTree = "<group>"; };
+		86087B4623769E6D00199D93 /* BFSmallFilmModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmModel.m; sourceTree = "<group>"; };
+		86087B4823771A4500199D93 /* BFSmallFilmTypeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmTypeButton.h; sourceTree = "<group>"; };
+		86087B4923771A4500199D93 /* BFSmallFilmTypeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmTypeButton.m; sourceTree = "<group>"; };
 		8609D6A6235DE3EC00D87A86 /* BeanFlapMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapMore.png; sourceTree = "<group>"; };
 		8609D6A8235DE72B00D87A86 /* BeanFlapWhiteBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapWhiteBack.png; sourceTree = "<group>"; };
 		860A963F23572FB700585F60 /* BeanFlapFilmBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapFilmBack.png; sourceTree = "<group>"; };
@@ -134,8 +163,14 @@
 		861A54FF2361BED000370DE9 /* BeanFlapMainViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainViewModel.m; sourceTree = "<group>"; };
 		861A55012361BF0600370DE9 /* BeanFlapMainViewManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeanFlapMainViewManger.h; sourceTree = "<group>"; };
 		861A55022361BF0600370DE9 /* BeanFlapMainViewManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeanFlapMainViewManger.m; sourceTree = "<group>"; };
+		861B042723895E3F008FA53F /* BFSmallFilmLongModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmLongModel.h; sourceTree = "<group>"; };
+		861B042823895E3F008FA53F /* BFSmallFilmLongModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmLongModel.m; sourceTree = "<group>"; };
+		861B043023897D17008FA53F /* BFSmallFilmLongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFSmallFilmLongTableViewCell.h; sourceTree = "<group>"; };
+		861B043123897D17008FA53F /* BFSmallFilmLongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFSmallFilmLongTableViewCell.m; sourceTree = "<group>"; };
 		861B1BEA2369D5420078A48E /* BFWillHeadViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWillHeadViewModel.h; sourceTree = "<group>"; };
 		861B1BEB2369D5420078A48E /* BFWillHeadViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWillHeadViewModel.m; sourceTree = "<group>"; };
+		86238B862378090900CDE422 /* BeanFlapTicket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapTicket.png; sourceTree = "<group>"; };
+		86238B8823780C3400CDE422 /* BeanFlapArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapArrow.png; sourceTree = "<group>"; };
 		8664C56C235C98FB006069AB /* BeanFlapStarPart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarPart.png; sourceTree = "<group>"; };
 		8664C56D235C98FB006069AB /* BeanFlapStarLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarLight.png; sourceTree = "<group>"; };
 		8664C56E235C98FB006069AB /* BeanFlapStarUnlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BeanFlapStarUnlight.png; sourceTree = "<group>"; };
@@ -301,6 +336,13 @@
 				8664C56E235C98FB006069AB /* BeanFlapStarUnlight.png */,
 				8609D6A6235DE3EC00D87A86 /* BeanFlapMore.png */,
 				8609D6A8235DE72B00D87A86 /* BeanFlapWhiteBack.png */,
+				86087B2C2372EE8300199D93 /* BeanFlapImage.jpg */,
+				86087B3D23769D3E00199D93 /* BeanFlapSaw.png */,
+				86238B862378090900CDE422 /* BeanFlapTicket.png */,
+				86238B8823780C3400CDE422 /* BeanFlapArrow.png */,
+				86062A2D23806523009C88FF /* BeanFlapQuestion.png */,
+				86062A2F23807C2E009C88FF /* BeanFlapPick.png */,
+				86087B2E23741C7E00199D93 /* load.gif */,
 			);
 			path = BeanFlapImages;
 			sourceTree = "<group>";
@@ -337,10 +379,24 @@
 		861A54FD2361BD2F00370DE9 /* BFSmallFilm */ = {
 			isa = PBXGroup;
 			children = (
-				8609D6A3235DE2AE00D87A86 /* BFSmallFilmViewModel.h */,
-				8609D6A4235DE2AE00D87A86 /* BFSmallFilmViewModel.m */,
+				86087B4523769E6D00199D93 /* BFSmallFilmModel.h */,
+				86087B4623769E6D00199D93 /* BFSmallFilmModel.m */,
+				861B042723895E3F008FA53F /* BFSmallFilmLongModel.h */,
+				861B042823895E3F008FA53F /* BFSmallFilmLongModel.m */,
+				86033D32237EE1B90062B717 /* BFSmallFilmPhotosModel.h */,
+				86033D33237EE1B90062B717 /* BFSmallFilmPhotosModel.m */,
 				860CE18A235890B800E51229 /* BFSmallFilmView.h */,
 				860CE18B235890B800E51229 /* BFSmallFilmView.m */,
+				86087B302375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.h */,
+				86087B312375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.m */,
+				86087B332375AFE700199D93 /* BFSmallFilmContentTableViewCell.h */,
+				86087B342375AFE700199D93 /* BFSmallFilmContentTableViewCell.m */,
+				861B043023897D17008FA53F /* BFSmallFilmLongTableViewCell.h */,
+				861B043123897D17008FA53F /* BFSmallFilmLongTableViewCell.m */,
+				86087B3A2375B54300199D93 /* BFSmallFilmSeeButton.h */,
+				86087B3B2375B54300199D93 /* BFSmallFilmSeeButton.m */,
+				86087B4823771A4500199D93 /* BFSmallFilmTypeButton.h */,
+				86087B4923771A4500199D93 /* BFSmallFilmTypeButton.m */,
 				860CE18723588E6C00E51229 /* BFSmallFilmViewController.h */,
 				860CE18823588E6C00E51229 /* BFSmallFilmViewController.m */,
 			);
@@ -434,11 +490,14 @@
 				8607E95F234F4B69006B9D57 /* Bean-Flap-Scan.png in Resources */,
 				8664C571235C98FB006069AB /* BeanFlapStarUnlight.png in Resources */,
 				86133ABA2352157900705ECF /* Bean-Flap-Arrow-Right.png in Resources */,
+				86087B2F23741C7E00199D93 /* load.gif in Resources */,
 				861150DC234E25140029BEAE /* Bean-Flap-Shopun.png in Resources */,
 				861150E4234E25140029BEAE /* Bean-Flap-Groupun.png in Resources */,
 				8664C56F235C98FB006069AB /* BeanFlapStarPart.png in Resources */,
+				86238B8923780C3400CDE422 /* BeanFlapArrow.png in Resources */,
 				86133AB52351FCC700705ECF /* Bean-Flap-Logo.png in Resources */,
 				8607E96A234F586C006B9D57 /* Bean-Flap-BlackLine.png in Resources */,
+				86087B2D2372EE8300199D93 /* BeanFlapImage.jpg in Resources */,
 				861150B3234DEF8E0029BEAE /* Main.storyboard in Resources */,
 				861150E1234E25140029BEAE /* Bean-Flap-Shop.png in Resources */,
 				861150DF234E25140029BEAE /* Bean-Flap-Book.png in Resources */,
@@ -451,7 +510,11 @@
 				861150E3234E25140029BEAE /* Bean-Flap-Home.png in Resources */,
 				8609D6A9235DE72B00D87A86 /* BeanFlapWhiteBack.png in Resources */,
 				860A96422357330C00585F60 /* BeanFlapFilmFrame.png in Resources */,
+				86062A2E23806523009C88FF /* BeanFlapQuestion.png in Resources */,
+				86087B3E23769D3E00199D93 /* BeanFlapSaw.png in Resources */,
 				861150E2234E25140029BEAE /* Bean-Flap-Bookun.png in Resources */,
+				86238B872378090900CDE422 /* BeanFlapTicket.png in Resources */,
+				86062A3023807C2E009C88FF /* BeanFlapPick.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,16 +551,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				86133AAD2351EF7800705ECF /* BeanFlapMainView.m in Sources */,
+				861B043223897D17008FA53F /* BFSmallFilmLongTableViewCell.m in Sources */,
+				86087B3C2375B54300199D93 /* BFSmallFilmSeeButton.m in Sources */,
+				86033D34237EE1B90062B717 /* BFSmallFilmPhotosModel.m in Sources */,
 				860CE180235884DD00E51229 /* BFFilmInformationView.m in Sources */,
 				86133AC0235216A600705ECF /* BeanFlapFilmListModel.m in Sources */,
 				86128276236DAF8400023821 /* BFNowHeadView.m in Sources */,
 				860CE1862358851600E51229 /* BFFilmInformationViewController.m in Sources */,
 				861B1BEC2369D5420078A48E /* BFWillHeadViewModel.m in Sources */,
 				86133AC3235216C600705ECF /* BeanFlapFilmListViewController.m in Sources */,
+				86087B4A23771A4500199D93 /* BFSmallFilmTypeButton.m in Sources */,
 				86113ACA236426430042A9B8 /* BFMainHeadView.m in Sources */,
 				86133ABD2352168900705ECF /* BeanFlapFilmListView.m in Sources */,
-				8609D6A5235DE2AE00D87A86 /* BFSmallFilmViewModel.m in Sources */,
 				861150EB234E27AE0029BEAE /* BeanFlapMainViewController.m in Sources */,
+				861B042923895E3F008FA53F /* BFSmallFilmLongModel.m in Sources */,
 				86FD4F8D2365C75100AA865A /* BFWillHeadView.m in Sources */,
 				861150B0234DEF8E0029BEAE /* ViewController.m in Sources */,
 				861150BB234DEF950029BEAE /* main.m in Sources */,
@@ -506,9 +573,12 @@
 				860CE183235884F600E51229 /* BFFilmInformationModel.m in Sources */,
 				860CE18C235890B800E51229 /* BFSmallFilmView.m in Sources */,
 				861A55002361BED000370DE9 /* BeanFlapMainViewModel.m in Sources */,
+				86087B352375AFE700199D93 /* BFSmallFilmContentTableViewCell.m in Sources */,
 				861A55032361BF0600370DE9 /* BeanFlapMainViewManger.m in Sources */,
+				86087B4723769E6D00199D93 /* BFSmallFilmModel.m in Sources */,
 				8607E966234F4D21006B9D57 /* BeanFlapEmptyViewController.m in Sources */,
 				861150AD234DEF8E0029BEAE /* AppDelegate.m in Sources */,
+				86087B322375AF6D00199D93 /* BFSmallFilmSelectUpTableViewCell.m in Sources */,
 				860CE18923588E6C00E51229 /* BFSmallFilmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

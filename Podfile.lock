@@ -1,20 +1,30 @@
 PODS:
   - JSONModel (1.7.0)
   - Masonry (1.0.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SOZOChromoplast (0.0.3)
 
 DEPENDENCIES:
   - JSONModel
   - Masonry
+  - SDWebImage
+  - SOZOChromoplast
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JSONModel
     - Masonry
+    - SDWebImage
+    - SOZOChromoplast
 
 SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SOZOChromoplast: 8902f554d852844c2025b26558d3322f8fae668d
 
-PODFILE CHECKSUM: 72c6aa0dfd133701b72ddcdc2e1f844db305a734
+PODFILE CHECKSUM: 15930c36557239db63e5d9e4368302ccf799ca22
 
 COCOAPODS: 1.7.5

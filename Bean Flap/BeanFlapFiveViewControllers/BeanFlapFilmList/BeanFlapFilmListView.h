@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeanFlapMainViewModel.h"
 #import "BFFilmListTableViewCell.h"
+#import "BFSmallFilmViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol BuyViewToViewControllerDelegate <NSObject>
 
 - (void)addBuyToViewController;
+- (void)pressFilm;
 
 @end
 
@@ -33,6 +36,18 @@ CellDelegate
 @property (nonatomic, strong) UITableView *listTableView;
 @property (nonatomic, strong) UIScrollView *listScrollView;
 @property (nonatomic, strong) UIImageView *blackLineImageView;
+@property (nonatomic, strong) NSMutableArray *filmSawArray;
+@property (nonatomic, strong) NSMutableArray *filmNameArray;
+@property (nonatomic, strong) NSMutableArray *filmImageArray;
+@property (nonatomic, strong) NSMutableArray *filmGradeArray;
+@property (nonatomic, strong) NSMutableArray *filmGradeImageArray;
+@property (nonatomic, strong) NSMutableArray *filmContentArray;
+@property (nonatomic, strong) NSMutableArray *URLArray;
+@property (nonatomic, strong) NSMutableArray *URLDataArray;
+@property (nonatomic, strong) NSMutableArray *filmIdArray;
+@property (nonatomic, strong) UIImageView *loadImageView;
+@property (nonatomic, strong) BeanFlapMainViewModel *listModel;
+@property (nonatomic, strong) NSString *filmCount;
 @property id <BuyViewToViewControllerDelegate> buyViewToViewtrollerDelegate;
 
 @end

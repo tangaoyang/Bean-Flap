@@ -10,6 +10,7 @@
 #import "BeanFlapFilmListViewController.h"
 #import "Masonry.h"
 #import "BFSmallFilmViewController.h"
+#import <SOZOChromoplast.h>
 
 @interface BeanFlapMainViewController ()
 
@@ -63,11 +64,11 @@
         [exButton addTarget:self action:@selector(press:) forControlEvents:UIControlEventTouchUpInside];
     }
     for (UIButton *filmButton in _myView.headView.nowHeadView.filmButtonArray) {
-        [filmButton addTarget:self action:@selector(pressFilm) forControlEvents:UIControlEventTouchUpInside];
+        [filmButton addTarget:self action:@selector(pressFilm:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     for (UIButton *exButton in _myView.headView.willHeadView.filmButtonArray) {
-        [exButton addTarget:self action:@selector(pressFilm) forControlEvents:UIControlEventTouchUpInside];
+        [exButton addTarget:self action:@selector(pressFilm:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     self.myView.viewToViewControllerDelegate = self;
@@ -94,8 +95,9 @@
     [self.myView.showScrollView setContentOffset:CGPointMake([UIScreen mainScreen].bounds.size.width * (button.tag - 100), 0)];
 }
 
-- (void)pressFilm {
+- (void)pressFilm: (UIButton *)button {
     BFSmallFilmViewController *film = [[BFSmallFilmViewController alloc] init];
+    film.idString = [NSString stringWithFormat:@"%@", [NSNumber numberWithInteger:button.tag]];
     [self presentViewController:film animated:NO completion:nil];
 }
 
